@@ -1,37 +1,45 @@
 {% extends "layout.html" %}
 {% block page_title %}Form Page{% endblock %}
 {% block content %}
-<h1 class="text-2xl font-bold bg-red-200">Form</h1>
+<div class="container mx-auto p-4">
+    <header class="text-center my-8">
+        <h1 class="text-4xl font-bold text-blue-600">Air Quality Classification Using CNN</h1>
+    </header>
 
-<form action="{{ url_for('predict') }}" method="POST" class="space-y-4">
-    <div>
-        <label for="pm10" class="block text-sm font-medium text-gray-700">PM10:</label>
-        <input type="text" name="pm10" id="pm10"
-            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+    <div class="flex justify-center">
+        <form action="{{ url_for('predict') }}" method="POST" class="bg-white p-6 rounded-lg shadow-lg w-full max-w-lg">
+            <div class="mb-4">
+                <label for="pm10" class="block text-gray-700 text-sm font-bold mb-2">PM10:</label>
+                <input type="text" name="pm10" id="pm10" class="input input-bordered w-full"
+                    placeholder="Enter PM10 value">
+            </div>
+
+            <div class="mb-4">
+                <label for="so2" class="block text-gray-700 text-sm font-bold mb-2">SO2:</label>
+                <input type="text" name="so2" id="so2" class="input input-bordered w-full"
+                    placeholder="Enter SO2 value">
+            </div>
+
+            <div class="mb-4">
+                <label for="co" class="block text-gray-700 text-sm font-bold mb-2">CO:</label>
+                <input type="text" name="co" id="co" class="input input-bordered w-full" placeholder="Enter CO value">
+            </div>
+
+            <div class="mb-4">
+                <label for="o3" class="block text-gray-700 text-sm font-bold mb-2">O3:</label>
+                <input type="text" name="o3" id="o3" class="input input-bordered w-full" placeholder="Enter O3 value">
+            </div>
+
+            <div class="mb-4">
+                <label for="no2" class="block text-gray-700 text-sm font-bold mb-2">NO2:</label>
+                <input type="text" name="no2" id="no2" class="input input-bordered w-full"
+                    placeholder="Enter NO2 value">
+            </div>
+
+            <div class="flex justify-center">
+                <button type="submit" class="btn btn-primary w-full">Submit</button>
+            </div>
+        </form>
     </div>
-    <div>
-        <label for="so2" class="block text-sm font-medium text-gray-700">SO2:</label>
-        <input type="text" name="so2" id="so2"
-            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-    </div>
-    <div>
-        <label for="co" class="block text-sm font-medium text-gray-700">CO:</label>
-        <input type="text" name="co" id="co"
-            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-    </div>
-    <div>
-        <label for="o3" class="block text-sm font-medium text-gray-700">O3:</label>
-        <input type="text" name="o3" id="o3"
-            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-    </div>
-    <div>
-        <label for="no2" class="block text-sm font-medium text-gray-700">NO2:</label>
-        <input type="text" name="no2" id="no2"
-            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-    </div>
-    <div>
-        <input type="submit" value="Submit"
-            class="bg-indigo-600 text-white px-4 py-2 rounded-md shadow-sm hover:bg-indigo-700">
-    </div>
-</form>
+</div>
 {% endblock %}
