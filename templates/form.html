@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% block page_title %}Form Page{% endblock %}
+{% block content %}
+<h1 class="text-2xl font-bold bg-red-200">Form</h1>
+
+<form action="{{ url_for('predict') }}" method="POST" class="space-y-4">
+    <div>
+        <label for="pm10" class="block text-sm font-medium text-gray-700">PM10:</label>
+        <input type="text" name="pm10" id="pm10"
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+    </div>
+    <div>
+        <label for="so2" class="block text-sm font-medium text-gray-700">SO2:</label>
+        <input type="text" name="so2" id="so2"
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+    </div>
+    <div>
+        <label for="co" class="block text-sm font-medium text-gray-700">CO:</label>
+        <input type="text" name="co" id="co"
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+    </div>
+    <div>
+        <label for="o3" class="block text-sm font-medium text-gray-700">O3:</label>
+        <input type="text" name="o3" id="o3"
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+    </div>
+    <div>
+        <label for="no2" class="block text-sm font-medium text-gray-700">NO2:</label>
+        <input type="text" name="no2" id="no2"
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+    </div>
+    <div>
+        <input type="submit" value="Submit"
+            class="bg-indigo-600 text-white px-4 py-2 rounded-md shadow-sm hover:bg-indigo-700">
+    </div>
+</form>
+{% endblock %}

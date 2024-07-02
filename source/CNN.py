@@ -19,22 +19,15 @@ def get_user_input():
     return np.array([[pm10, so2, co, o3, no2]])
 
 def predict_air_quality(user_input):
-    # Convert user input to DataFrame
     user_input_df = pd.DataFrame(user_input, columns=['pm10', 'so2', 'co', 'o3', 'no2'])
     
-    # Scale the input features using the loaded scaler
     new_features = scaler.transform(user_input_df)
-    
-    # Reshape the features for model input
     new_features = np.expand_dims(new_features, axis=2)
     
-    # Predict the category using the loaded model
     predictions = model.predict(new_features)
     predicted_classes = np.argmax(predictions, axis=1)
     
-    # Inverse transform the predicted classes to get labels
     predicted_labels = label_encoder.inverse_transform(predicted_classes)
-    
     return predicted_labels[0]
 
 # Example usage

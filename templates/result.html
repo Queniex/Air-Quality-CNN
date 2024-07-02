@@ -1,0 +1,7 @@
+{% extends "layout.html" %}
+{% block page_title %}Result Page{% endblock %}
+{% block content %}
+<h1>Prediction Result</h1>
+<p>Predicted Air Quality Category: {{ prediction }}</p>
+<a href="{{ url_for('home') }}">Go back to form</a>
+{% endblock %}
