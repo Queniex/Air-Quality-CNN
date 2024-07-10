@@ -8,7 +8,16 @@
 
     <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-lg mx-auto text-center">
         <p class="text-lg text-gray-700">Predicted Air Quality Category:</p>
-        <p class="text-2xl font-bold text-green-600">{{ prediction }}</p>
+
+        {% if prediction == "BAIK" %}
+            <p class="text-2xl font-bold text-green-600">{{ prediction }}</p>
+        {% elif prediction == "SEDANG" %}
+            <p class="text-2xl font-bold text-yellow-600">{{ prediction }}</p>
+        {% elif prediction == "TIDAK SEHAT" %}
+            <p class="text-2xl font-bold text-red-600">{{ prediction }}</p>
+        {% else %}
+            <p class="text-2xl font-bold text-black-600">{{ prediction }}</p>
+        {% endif %}
 
         <div class="mt-6">
             <a href="{{ url_for('result') }}" class="btn btn-black text-white">Go back to form</a>
