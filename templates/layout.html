@@ -1,27 +1,89 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" data-theme="black">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block page_title %}Air Quality Prediction{% endblock %}</title>
-    <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}" /> -->
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="images/logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.3.1/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/d519f2c1ee.js" crossorigin="anonymous"></script>
 
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'color': '#E76F51',
+
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .font-poppins {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* * {
+            box-shadow: 0 0 0 1px red inset;
+        } */
+    </style>
 </head>
+<header class="sticky top-0 z-50">
+    <nav class="mt-5">
+        <div class="navbar justify-between max-w-screen-xl mx-auto bg-[black] rounded-md">
+            <div class="navbar-start">
+                <div class="dropdown">
+                    <label tabindex="0" class="btn btn-ghost lg:hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h8m-8 6h16" />
+                        </svg>
+                    </label>
+                    <ul tabindex="0"
+                        class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 font-medium font-poppins">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/process">Process</a></li>
+                        <li><a href="/insight">Insight</a></li>
+                        <li><a href="/result">Result</a></li>
+                    </ul>
+                </div>
+
+                <a href="#" class="btn btn-ghost normal-case text-xl inline-block pt-2">
+                    Air Quality <span class="text-white">Classification </span>
+                </a>
+            </div>
+            <div class="navbar-center hidden lg:flex">
+                <ul class="menu menu-horizontal px-1 font-medium font-poppins ml-[100px]">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/process">Process</a></li>
+                    <li><a href="insight">Insight</a></li>
+                    <li><a href="/result">Result</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
 
 <body>
-    <header>
-    </header>
-    <main>
-        {% block content %}{% endblock %}
-    </main>
+    <div>
+        {% block banner %} {% endblock %}
+    </div>
 </body>
+
+<footer class="footer footer-center text-base-content mb-3">
+    <aside>
+        <p>Copyright © 2024 - All right reserved by <strong class="text-white">Kelompok 2</strong></p>
+    </aside>
+</footer>
 
 </html>

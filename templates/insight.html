@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+{% block page_title %}Insight | Air Quality{% endblock %}
+{% block banner %}
+<div class="relative mt-3">
+    <div class="flex flex-col items-center lg:mx-72 justify-center min-h-screen space-y-8 mb-5">
+        <h1 class="text-[33px] font-bold text-white text-center">Model Insight</h1>
+        <!-- <div id="visualisasi-dataset" class="w-full bg-white p-4 rounded-lg shadow-lg">
+                <h1 class="text-2xl font-bold mb-4 text-center">Visualisasi Dataset</h1>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                    <div class="flex flex-col items-center">
+                        <h2 class="text-xl font-semibold">Tampilan Plot Data Outlier</h2>
+                        <img src="https://via.placeholder.com/300" alt="Plot Data Outlier" class="mt-2">
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <h2 class="text-xl font-semibold">Tampilan Penyebaran Data</h2>
+                        <img src="https://via.placeholder.com/300" alt="Penyebaran Data" class="mt-2">
+                    </div>
+                </div>
+            </div> -->
+
+        <div id="Plotcurve-model" class="w-full bg-white p-4 rounded-lg shadow-lg">
+            <h1 class="text-2xl font-bold mb-4 text-center text-black">Plot Curve Model</h1>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 text-gray-700">
+                <div class="flex flex-col items-center">
+                    <h2 class="text-xl font-semibold">Plot Curve before Resampling</h2>
+                    <img src="https://i.postimg.cc/Znwbmbvb/Plot-Curve-Prereprocessing.png"
+                        alt="Plot Curve Sebelum Resampling" class="mt-2">
+                </div>
+                <div class="flex flex-col items-center">
+                    <h2 class="text-xl font-semibold">Plot Curve after Resampling</h2>
+                    <img src="https://i.postimg.cc/g0WPhBFr/Plot-Curve-Resampling.png"
+                        alt="Plot Curve Sesudah Resampling" class="mt-2">
+                </div>
+            </div>
+        </div>
+
+        <div id="evaluasi-model" class="w-full bg-white p-4 rounded-lg shadow-lg">
+            <h1 class="text-2xl font-bold mb-4 text-center text-black">Comparison Actual vs Predicted</h1>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 text-gray-700">
+                <div class="flex flex-col items-center">
+                    <h2 class="text-xl font-semibold">Model Before Resampling</h2>
+                    <img src="https://i.postimg.cc/c4YWTBX1/image.png" alt="Evaluasi Model Sebelum Resampling"
+                        class="mt-2">
+                </div>
+                <div class="flex flex-col items-center">
+                    <h2 class="text-xl font-semibold">Model After Resampling</h2>
+                    <img src="https://i.postimg.cc/9FHKX5YV/image.png" alt="Evaluasi Model Sesudah Resampling"
+                        class="mt-2">
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}

@@ -1,5 +1,3 @@
-# from flask import Flask, redirect, url_for, request, render_template, jsonify
-
 from flask import Flask, redirect, url_for, request, render_template, jsonify
 from flask_cors import CORS
 import numpy as np
@@ -29,8 +27,20 @@ def predict_air_quality(user_input):
     predicted_labels = label_encoder.inverse_transform(predicted_classes)
     return predicted_labels[0]
 
-@app.route("/", methods=["GET", "POST"])
+@app.route("/")
 def home():
+    return render_template("index.html")
+
+@app.route("/process")
+def process():
+    return render_template("process.html")
+
+@app.route("/insight")
+def insight():
+    return render_template("insight.html")
+
+@app.route("/result", methods=["GET", "POST"])
+def result():
     return render_template("form.html")
 
 @app.route("/predict", methods=["POST"])
@@ -46,10 +56,7 @@ def predict():
         predicted_category = predict_air_quality(user_input)
 
         return render_template("result.html", prediction=predicted_category)
-
-@app.route("/result")
-def result():
-    return render_template("result.html")
+        # return render_template("result.html") 
 
 if __name__ == "__main__":
     app.run(debug=True)
@@ -58,4 +65,4 @@ if __name__ == "__main__":
 def notfound(not_found):
     return render_template("notfound.html", page=not_found)
 
-app.run(debug=True)
+# app.run(debug=True)

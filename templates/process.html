@@ -1,0 +1,226 @@
+{% extends "layout.html" %}
+{% block page_title %}Process | Air Quality{% endblock %}
+{% block banner %}
+<div class="relative mt-10">
+    <div class="flex flex-col items-center justify-center min-h-screen">
+        <div class="text-center lg:mx-72">
+            <h1 class="text-[43px] font-bold text-white">6 STEPS IN CRISP-DM</h1>
+            <h2 class="text-[33px] font-bold text-white">OF <span class="text-gray-400">AIR QUALITY</span>
+                ISSUE
+            </h2>
+            <p class="text-[20px] mt-4 text-justify font-light">The CRISP-DM methodology provides a structured approach
+                for tackling data mining problems. This framework is crucial for addressing air quality issues,
+                particularly in urban environments where pollution poses significant health risks. By following these
+                six steps, we can systematically analyze air quality data, develop models, and deploy solutions to
+                monitor and improve the air we breathe.</p>
+        </div>
+        <div class="w-full max-w-3xl mt-8">
+            <div tabindex="0" class="collapse collapse-arrow bg-gray-700 text-white rounded-box mb-4">
+                <input type="checkbox" />
+                <div class="collapse-title text-[16px] font-semibold">
+                    1. Business Understanding
+                </div>
+                <div class="collapse-content text-justify font-light text-[16px]">
+                    <p>Air pollution is one of the issues in society. Air pollution affects human health and the
+                        environment. In Indonesia, the <strong class="font-bold">Air Pollution Standard Index
+                            (ISPU)</strong> is
+                        measured from the
+                        levels of particulate matter 10 (PM10), carbon monoxide (CO), sulfur dioxide (SO2), ozone
+                        (O3), and nitrogen dioxide (NO2). Therefore, the <strong class="font-bold">CNN
+                            algorithm</strong> is used to
+                        classify the air
+                        quality index based on the ISPU standard.</p>
+                </div>
+            </div>
+            <div tabindex="0" class="collapse collapse-arrow bg-gray-700 text-white rounded-box mb-4">
+                <input type="checkbox" />
+                <div class="collapse-title text-[16px] font-semibold">
+                    2. Data Understanding
+                </div>
+                <div class="collapse-content font-light text-justify text-[16px]">
+                    <p>For this modeling, a dataset obtained from Open Data Jakarta from the years 2010 to 2021 will
+                        be used. The data consists of 4383 samples, including 1155 samples of the <strong
+                            class="font-bold">'Baik'
+                        </strong>category,
+                        3087 samples of the <strong class="font-bold">'Sedang'</strong> category, and 141 samples of
+                        the
+                        <strong class="font-bold">'Tidak Sehat'</strong> category.
+                    </p>
+                </div>
+            </div>
+            <div tabindex="0" class="collapse collapse-arrow bg-gray-700 text-white rounded-box mb-4">
+                <input type="checkbox" />
+                <div class="collapse-title text-[16px] font-semibold">
+                    3. Data Preparation
+                </div>
+                <div class="collapse-content text-justify font-light font-light text-[16px]">
+                    <p>The dataset is imbalanced, so it needs cleaning through the process of resampling the
+                        imbalanced dataset with <strong class="font-bold">hybridization</strong>. The process is as
+                        follows:</p>
+                    <ul class="list-disc list-inside my-5 ml-4">
+                        <li>Data in the 'Baik' category: 1054 data</li>
+                        <li>Data in the 'Sedang' category: 3065 data → <strong class="font-bold">undersampling
+                                (ENN)</strong> = 1000
+                            data</li>
+                        <li>Data in the 'Tidak Sehat' category: 154 data → <strong class="font-bold">oversampling
+                                (SMOTE)</strong> =
+                            5000 data or
+                            10000 data →
+                            <strong class="font-bold">undersampling (ENN)</strong> = 1000 data
+                        </li>
+                        <li>Null data: 110 → <strong class="font-bold">removed</strong></li>
+                    </ul>
+                    <p>After that, the resampled data is divided into two parts, namely <strong
+                            class="font-bold">testing and training
+                            data</strong>,
+                        using stratified shuffle with a composition of <strong class="font-bold">0.2 and
+                            0.8</strong>.</p>
+                </div>
+            </div>
+            <div tabindex="0" class="collapse collapse-arrow bg-gray-700 text-white rounded-box mb-4">
+                <input type="checkbox" />
+                <div class="collapse-title text-[16px] font-semibold">
+                    4. Modelling
+                </div>
+                <div class="collapse-content text-justify font-light font-light text-[16px]">
+                    <p>At this core stage, the model is formed with:</p>
+                    <ul class="list-disc list-inside ml-4 mt-2">
+                        <li>a CNN model is begin with
+                            a 1D convolutional layer (Conv1D) featuring 32 filters of size 3 employing the ReLU
+                            activation function. This layer processes input data shaped as (5, 1).</li>
+                        <li>Following this, a
+                            MaxPooling1D layer with a pool size of 2 reduces spatial dimensions. </li>
+                        <li>The Flatten layer then
+                            reshapes the output into a one-dimensional vector suitable for subsequent dense.</li>
+                        <li>The model includes two dense layers:
+                            <ul class="list-disc ml-8 list-inside">
+                                <li>the first has 5 units with a sigmoid activation function,</li>
+                                <li>while the second has 3 units with a softmax activation function, tailored for
+                                    multi-class
+                                    classification.</li>
+                            </ul>
+                        </li>
+                        <li>The SGD optimizer is configured with a learning rate of 0.01 and momentum of
+                            0.9 to minimize the sparse categorical crossentropy loss function during compilation.
+                        </li>
+                        <li>Training spans 200 epochs on the training data (X_train, y_train), with a batch size of
+                            32,
+                            and evaluation is conducted on separate validation data (X_test, y_test).</li>
+                    </ul>
+
+                </div>
+            </div>
+            <div tabindex="0" class="collapse collapse-arrow bg-gray-700 text-white rounded-box mb-4">
+                <input type="checkbox" />
+                <div class="collapse-title text-[16px] font-semibold">
+                    5. Evaluation
+                </div>
+                <div class="collapse-content text-justify font-light text-[16px]">
+                    <p>To measure the credibility of the model, a confusion matrix is used to evaluate the results.
+                        The confusion matrix is as follows:</p>
+                    <table class="table-auto w-full mb-4 mt-3">
+                        <thead>
+                            <tr>
+                                <th class="border px-4 py-2">Actual \ Predicted</th>
+                                <th class="border px-4 py-2">BAIK</th>
+                                <th class="border px-4 py-2">SEDANG</th>
+                                <th class="border px-4 py-2">TIDAK SEHAT</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="border px-4 py-2">BAIK</td>
+                                <td class="border px-4 py-2">184</td>
+                                <td class="border px-4 py-2">2</td>
+                                <td class="border px-4 py-2">0</td>
+                            </tr>
+                            <tr>
+                                <td class="border px-4 py-2">SEDANG</td>
+                                <td class="border px-4 py-2">1</td>
+                                <td class="border px-4 py-2">199</td>
+                                <td class="border px-4 py-2">0</td>
+                            </tr>
+                            <tr>
+                                <td class="border px-4 py-2">TIDAK SEHAT</td>
+                                <td class="border px-4 py-2">0</td>
+                                <td class="border px-4 py-2">0</td>
+                                <td class="border px-4 py-2">200</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>Additionally, a classification report is generated to provide detailed metrics on the model's
+                        performance:</p>
+                    <table class="table-auto w-full mb-4 mt-3">
+                        <thead>
+                            <tr>
+                                <th class="border px-4 py-2">Class</th>
+                                <th class="border px-4 py-2">Precision</th>
+                                <th class="border px-4 py-2">Recall</th>
+                                <th class="border px-4 py-2">F1-Score</th>
+                                <th class="border px-4 py-2">Support</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="border px-4 py-2">BAIK</td>
+                                <td class="border px-4 py-2">0.99</td>
+                                <td class="border px-4 py-2">0.99</td>
+                                <td class="border px-4 py-2">0.99</td>
+                                <td class="border px-4 py-2">186</td>
+                            </tr>
+                            <tr>
+                                <td class="border px-4 py-2">SEDANG</td>
+                                <td class="border px-4 py-2">0.99</td>
+                                <td class="border px-4 py-2">0.99</td>
+                                <td class="border px-4 py-2">0.99</td>
+                                <td class="border px-4 py-2">200</td>
+                            </tr>
+                            <tr>
+                                <td class="border px-4 py-2">TIDAK SEHAT</td>
+                                <td class="border px-4 py-2">1.00</td>
+                                <td class="border px-4 py-2">1.00</td>
+                                <td class="border px-4 py-2">1.00</td>
+                                <td class="border px-4 py-2">200</td>
+                            </tr>
+                            <tr>
+                                <td class="border px-4 py-2 font-bold">Accuracy</td>
+                                <td class="border px-4 py-2 font-bold" colspan="4">0.99 (586 samples)</td>
+                            </tr>
+                            <tr>
+                                <td class="border px-4 py-2 font-bold">Macro Avg</td>
+                                <td class="border px-4 py-2">0.99</td>
+                                <td class="border px-4 py-2">0.99</td>
+                                <td class="border px-4 py-2">0.99</td>
+                                <td class="border px-4 py-2">586</td>
+                            </tr>
+                            <tr>
+                                <td class="border px-4 py-2 font-bold">Weighted Avg</td>
+                                <td class="border px-4 py-2">0.99</td>
+                                <td class="border px-4 py-2">0.99</td>
+                                <td class="border px-4 py-2">0.99</td>
+                                <td class="border px-4 py-2">586</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>The confusion matrix and classification report show that the model achieves high precision,
+                        recall, and f1-score across all categories, with an overall accuracy of 99%. This indicates
+                        that the model performs excellently in classifying air quality indices based on the ISPU
+                        standards.</p>
+                </div>
+            </div>
+            <div tabindex="0" class="collapse collapse-arrow bg-gray-700 text-white rounded-box mb-4">
+                <input type="checkbox" />
+                <div class="collapse-title text-[16px] font-semibold">
+                    6. Deployment
+                </div>
+                <div class="collapse-content text-justify font-light font-light text-[16px]">
+                    <p>After completing all the previous steps, the model is now ready for deployment. The
+                        deployment process involves integrating the model into a production environment where it can
+                        be accessed and used by end-users. You can find the deployed model <a href="/result"
+                            class="hover:text-black hover:bg-white p-1 rounded-md text-white bg-black">here</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
