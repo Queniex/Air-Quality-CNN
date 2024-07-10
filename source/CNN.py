@@ -4,11 +4,11 @@ import tensorflow as tf
 import joblib
 
 # Load scaler and label encoder
-scaler = joblib.load('D:\\Download\\Semester 6\\PBL\\Air_Quality_Website\\source\\scaler.pkl')
-label_encoder = joblib.load('D:\\Download\\Semester 6\\PBL\\Air_Quality_Website\\source\\label_encoder.pkl')
+scaler = joblib.load('source/scaler.pkl')
+label_encoder = joblib.load('source/label_encoder.pkl')
 
 # Load the saved CNN model
-model = tf.keras.models.load_model('D:\\Download\\Semester 6\\PBL\\Air_Quality_Website\\source\\cnn_air_quality_model.h5')
+model = tf.keras.models.load_model('source/cnn_air_quality_model.h5')
 
 def get_user_input():
     pm10 = float(input("Masukkan nilai pm10: "))

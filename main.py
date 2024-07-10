@@ -9,11 +9,11 @@ app=Flask(__name__)
 CORS(app)
 
 # Load scaler and label encoder
-scaler = joblib.load('D:\\Download\\Semester 6\\PBL\\Air_Quality_Website\\source\\scaler.pkl')
-label_encoder = joblib.load('D:\\Download\\Semester 6\\PBL\\Air_Quality_Website\\source\\label_encoder.pkl')
+scaler = joblib.load('source/scaler.pkl')
+label_encoder = joblib.load('source/label_encoder.pkl')
 
 # Load the saved CNN model
-model = tf.keras.models.load_model('D:\\Download\\Semester 6\\PBL\\Air_Quality_Website\\source\\cnn_air_quality_model.h5')
+model = tf.keras.models.load_model('source/cnn_air_quality_model.h5')
 
 def predict_air_quality(user_input):
     user_input_df = pd.DataFrame(user_input, columns=['pm10', 'so2', 'co', 'o3', 'no2'])
