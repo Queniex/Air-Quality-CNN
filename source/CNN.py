@@ -30,7 +30,7 @@ def predict_air_quality(user_input):
     predicted_labels = label_encoder.inverse_transform(predicted_classes)
     return predicted_labels[0]
 
-# Example usage
-user_input = get_user_input()
-predicted_category = predict_air_quality(user_input)
-print(f"Kategori yang diprediksi: {predicted_category}")
+# # Example usage
+# user_input = get_user_input()
+# predicted_category = predict_air_quality(user_input)
+# print(f"Kategori yang diprediksi: {predicted_category}")

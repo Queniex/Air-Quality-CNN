@@ -8,24 +8,9 @@ import joblib
 app=Flask(__name__)
 CORS(app)
 
-# Load scaler and label encoder
-scaler = joblib.load('source/scaler.pkl')
-label_encoder = joblib.load('source/label_encoder.pkl')
-
-# Load the saved CNN model
-model = tf.keras.models.load_model('source/cnn_air_quality_model.h5')
-
-def predict_air_quality(user_input):
-    user_input_df = pd.DataFrame(user_input, columns=['pm10', 'so2', 'co', 'o3', 'no2'])
-    
-    new_features = scaler.transform(user_input_df)
-    new_features = np.expand_dims(new_features, axis=2)
-    
-    predictions = model.predict(new_features)
-    predicted_classes = np.argmax(predictions, axis=1)
-    
-    predicted_labels = label_encoder.inverse_transform(predicted_classes)
-    return predicted_labels[0]
+from source.CNN import (
+    predict_air_quality
+)
 
 @app.route("/")
 def home():
