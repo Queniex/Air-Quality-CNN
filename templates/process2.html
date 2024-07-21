@@ -39,7 +39,7 @@
                 </div>
                 <div class="collapse-content font-light text-justify text-[16px]">
                     <p>For this modeling, a dataset obtained from Open Data Jakarta from the years 2010 to 2021 will
-                        be used. The data consists of 4384 samples, including 1155 samples of the <strong
+                        be used. The data consists of 4383 samples, including 1155 samples of the <strong
                             class="font-bold">'Baik'
                         </strong>category,
                         3087 samples of the <strong class="font-bold">'Sedang'</strong> category, and 141 samples of
@@ -53,25 +53,30 @@
                 <div class="collapse-title text-[16px] font-semibold">
                     3. Data Preparation
                 </div>
-                <div class="collapse-content text-justify font-light text-[16px]">
-                    <p>The initial dataset contains 4384 rows of data. <strong>Null data</strong> found = 110, so these
-                        were removed
-                        during the pre-processing stage. After cleaning the missing data, the results were:</p>
+                <div class="collapse-content text-justify font-light font-light text-[16px]">
+                    <p>The dataset is imbalanced, so it needs cleaning through the process of resampling the
+                        imbalanced dataset with <strong class="font-bold">hybridization</strong>. The process is as
+                        follows:</p>
                     <ul class="list-disc list-inside my-5 ml-4">
-                        <li>Data in the <strong>'Sedang'</strong> category: 2877</li>
-                        <li>Data in the <strong>'Baik'</strong> category: 928</li>
-                        <li>Data in the <strong>'Tidak Sehat'</strong> category: 145</li>
+                        <li>Data in the 'Baik' category: 1054 data</li>
+                        <li>Data in the 'Sedang' category: 3065 data → <strong class="font-bold">undersampling
+                                (ENN)</strong> = 1000
+                            data</li>
+                        <li>Data in the 'Tidak Sehat' category: 154 data → <strong class="font-bold">oversampling
+                                (SMOTE)</strong> =
+                            5000 data or
+                            10000 data →
+                            <strong class="font-bold">undersampling (ENN)</strong> = 1000 data
+                        </li>
+                        <li>Null data: 110 → <strong class="font-bold">removed</strong></li>
                     </ul>
-                    <p>Total data after cleaning: 3950</p>
-                    <p>After that, the data was split using stratified shuffle split with a ratio of 0.8 and 0.2,
-                        resulting in:</p>
-                    <ul class="list-disc list-inside my-5 ml-4">
-                        <li>Training Data: 3160 samples</li>
-                        <li>Testing Data: 790 samples</li>
-                    </ul>
+                    <p>After that, the resampled data is divided into two parts, namely <strong
+                            class="font-bold">testing and training
+                            data</strong>,
+                        using stratified shuffle with a composition of <strong class="font-bold">0.2 and
+                            0.8</strong>.</p>
                 </div>
             </div>
-
             <div tabindex="0" class="collapse collapse-arrow bg-gray-700 text-white rounded-box mb-4">
                 <input type="checkbox" />
                 <div class="collapse-title text-[16px] font-semibold">
@@ -125,21 +130,21 @@
                         <tbody>
                             <tr>
                                 <td class="border px-4 py-2">BAIK</td>
-                                <td class="border px-4 py-2">172</td>
-                                <td class="border px-4 py-2">14</td>
+                                <td class="border px-4 py-2">184</td>
+                                <td class="border px-4 py-2">2</td>
                                 <td class="border px-4 py-2">0</td>
                             </tr>
                             <tr>
                                 <td class="border px-4 py-2">SEDANG</td>
-                                <td class="border px-4 py-2">20</td>
-                                <td class="border px-4 py-2">554</td>
                                 <td class="border px-4 py-2">1</td>
+                                <td class="border px-4 py-2">199</td>
+                                <td class="border px-4 py-2">0</td>
                             </tr>
                             <tr>
                                 <td class="border px-4 py-2">TIDAK SEHAT</td>
                                 <td class="border px-4 py-2">0</td>
-                                <td class="border px-4 py-2">1</td>
-                                <td class="border px-4 py-2">25</td>
+                                <td class="border px-4 py-2">0</td>
+                                <td class="border px-4 py-2">200</td>
                             </tr>
                         </tbody>
                     </table>
@@ -158,47 +163,47 @@
                         <tbody>
                             <tr>
                                 <td class="border px-4 py-2">BAIK</td>
-                                <td class="border px-4 py-2">0.90</td>
-                                <td class="border px-4 py-2">0.92</td>
-                                <td class="border px-4 py-2">0.91</td>
+                                <td class="border px-4 py-2">0.99</td>
+                                <td class="border px-4 py-2">0.99</td>
+                                <td class="border px-4 py-2">0.99</td>
                                 <td class="border px-4 py-2">186</td>
                             </tr>
                             <tr>
                                 <td class="border px-4 py-2">SEDANG</td>
-                                <td class="border px-4 py-2">0.97</td>
-                                <td class="border px-4 py-2">0.96</td>
-                                <td class="border px-4 py-2">0.97</td>
-                                <td class="border px-4 py-2">575</td>
+                                <td class="border px-4 py-2">0.99</td>
+                                <td class="border px-4 py-2">0.99</td>
+                                <td class="border px-4 py-2">0.99</td>
+                                <td class="border px-4 py-2">200</td>
                             </tr>
                             <tr>
                                 <td class="border px-4 py-2">TIDAK SEHAT</td>
-                                <td class="border px-4 py-2">0.96</td>
-                                <td class="border px-4 py-2">0.86</td>
-                                <td class="border px-4 py-2">0.91</td>
-                                <td class="border px-4 py-2">29</td>
+                                <td class="border px-4 py-2">1.00</td>
+                                <td class="border px-4 py-2">1.00</td>
+                                <td class="border px-4 py-2">1.00</td>
+                                <td class="border px-4 py-2">200</td>
                             </tr>
                             <tr>
                                 <td class="border px-4 py-2 font-bold">Accuracy</td>
-                                <td class="border px-4 py-2 font-bold" colspan="4">0.95 (790 samples)</td>
+                                <td class="border px-4 py-2 font-bold" colspan="4">0.99 (586 samples)</td>
                             </tr>
                             <tr>
                                 <td class="border px-4 py-2 font-bold">Macro Avg</td>
-                                <td class="border px-4 py-2">0.94</td>
-                                <td class="border px-4 py-2">0.92</td>
-                                <td class="border px-4 py-2">0.93</td>
-                                <td class="border px-4 py-2">790</td>
+                                <td class="border px-4 py-2">0.99</td>
+                                <td class="border px-4 py-2">0.99</td>
+                                <td class="border px-4 py-2">0.99</td>
+                                <td class="border px-4 py-2">586</td>
                             </tr>
                             <tr>
                                 <td class="border px-4 py-2 font-bold">Weighted Avg</td>
-                                <td class="border px-4 py-2">0.95</td>
-                                <td class="border px-4 py-2">0.95</td>
-                                <td class="border px-4 py-2">0.95</td>
-                                <td class="border px-4 py-2">790</td>
+                                <td class="border px-4 py-2">0.99</td>
+                                <td class="border px-4 py-2">0.99</td>
+                                <td class="border px-4 py-2">0.99</td>
+                                <td class="border px-4 py-2">586</td>
                             </tr>
                         </tbody>
                     </table>
                     <p>The confusion matrix and classification report show that the model achieves high precision,
-                        recall, and f1-score across all categories, with an overall accuracy of 95%. This indicates
+                        recall, and f1-score across all categories, with an overall accuracy of 99%. This indicates
                         that the model performs excellently in classifying air quality indices based on the ISPU
                         standards.</p>
                 </div>
