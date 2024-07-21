@@ -29,4 +29,7 @@ Air pollution is one of the issues in society. Air pollution affects human healt
 
  - [Flask Installation](https://flask.palletsprojects.com/en/3.0.x/installation/)
  - [DaisyUI Documentation](https://daisyui.com/)
- 
+
+
+pip install joblib==1.2.0
+pip install tensorflow==2.9.0
