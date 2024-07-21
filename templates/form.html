@@ -13,32 +13,37 @@
                 <div class="grid grid-cols-3 gap-3">
                     <div class="mb-4">
                         <label for="pm10" class="block text-white text-sm font-bold mb-2">PM10:</label>
-                        <input required type="number" name="pm10" id="pm10" class="input input-bordered bg-white w-full text-black"
-                            placeholder="Enter value" min="0" max="100">
+                        <input required type="number" name="pm10" id="pm10"
+                            class="input input-bordered bg-white w-full text-black" placeholder="Enter value" min="0"
+                            max="100">
                     </div>
 
                     <div class="mb-4">
                         <label for="so2" class="block text-white text-sm font-bold mb-2">SO2:</label>
-                        <input required type="number" name="so2" id="so2" class="input input-bordered bg-white w-full text-black"
-                            placeholder="Enter value" min="0" max="100">
+                        <input required type="number" name="so2" id="so2"
+                            class="input input-bordered bg-white w-full text-black" placeholder="Enter value" min="0"
+                            max="100">
                     </div>
 
                     <div class="mb-4">
                         <label for="co" class="block text-white text-sm font-bold mb-2">CO:</label>
-                        <input required type="number" name="co" id="co" class="input input-bordered bg-white w-full text-black"
-                            placeholder="Enter value" min="0" max="100">
+                        <input required type="number" name="co" id="co"
+                            class="input input-bordered bg-white w-full text-black" placeholder="Enter value" min="0"
+                            max="100">
                     </div>
 
                     <div class="mb-4">
                         <label for="o3" class="block text-white text-sm font-bold mb-2">O3:</label>
-                        <input required type="number" name="o3" id="o3" class="input input-bordered bg-white w-full text-black"
-                            placeholder="Enter value" min="0" max="100">
+                        <input required type="number" name="o3" id="o3"
+                            class="input input-bordered bg-white w-full text-black" placeholder="Enter value" min="0"
+                            max="200">
                     </div>
 
                     <div class="mb-4">
                         <label for="no2" class="block text-white text-sm font-bold mb-2">NO2:</label>
-                        <input required type="number" name="no2" id="no2" class="input input-bordered bg-white w-full text-black"
-                            placeholder="Enter value" min="0" max="100">
+                        <input required type="number" name="no2" id="no2"
+                            class="input input-bordered bg-white w-full text-black" placeholder="Enter value" min="0"
+                            max="500">
                     </div>
                 </div>
 
@@ -59,6 +64,23 @@
                 if (this.value < 0) {
                     alert("Value cannot be less than 0");
                     this.value = 0;
+                } else {
+                    if (this.id === 'pm10' && this.value > 100) {
+                        alert("Value cannot be more than 100");
+                        this.value = 100;
+                    } else if (this.id === 'so2' && this.value > 100) {
+                        alert("Value cannot be more than 100");
+                        this.value = 1000;
+                    } else if (this.id === 'co' && this.value > 100) {
+                        alert("Value cannot be more than 100");
+                        this.value = 100;
+                    } else if (this.id === 'o3' && this.value > 200) {
+                        alert("Value cannot be more than 200");
+                        this.value = 200;
+                    } else if (this.id === 'no2' && this.value > 500) {
+                        alert("Value cannot be more than 500");
+                        this.value = 500;
+                    }
                 }
             });
         });
