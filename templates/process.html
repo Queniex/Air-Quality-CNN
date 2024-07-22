@@ -63,14 +63,18 @@
                         <li>Data in the <strong>'Tidak Sehat'</strong> category: 145</li>
                     </ul>
                     <p>Total data after cleaning: 3950</p>
-                    <p>After that, the data was split using stratified shuffle split with a ratio of 0.8 and 0.2,
-                        resulting in:</p>
+                    <p>The data was then resampled as follows:</p>
                     <ul class="list-disc list-inside my-5 ml-4">
-                        <li>Training Data: 3160 samples</li>
-                        <li>Testing Data: 790 samples</li>
+                        <li>Data in the 'Sedang' category was undersampled using ENN to 1000
+                            samples.</li>
+                        <li>Data in the 'Tidak Sehat' category was oversampled using SMOTE to 2800 samples.</li>
+                        <li>Oversampled 'Tidak Sehat' data was then undersampled using ENN to 924 samples.</li>
                     </ul>
+                    <p>After resampling, the data was split using stratified shuffle split with a ratio of 0.8 and 0.2
+                    </p>
                 </div>
             </div>
+
 
             <div tabindex="0" class="collapse collapse-arrow bg-gray-700 text-white rounded-box mb-4">
                 <input type="checkbox" />
@@ -98,7 +102,7 @@
                         <li>The SGD optimizer is configured with a learning rate of 0.01 and momentum of
                             0.9 to minimize the sparse categorical crossentropy loss function during compilation.
                         </li>
-                        <li>Training spans 200 epochs on the training data (X_train, y_train), with a batch size of
+                        <li>Training spans 30 epochs on the training data (X_train, y_train), with a batch size of
                             32,
                             and evaluation is conducted on separate validation data (X_test, y_test).</li>
                     </ul>
@@ -125,21 +129,21 @@
                         <tbody>
                             <tr>
                                 <td class="border px-4 py-2">BAIK</td>
-                                <td class="border px-4 py-2">172</td>
-                                <td class="border px-4 py-2">14</td>
-                                <td class="border px-4 py-2">0</td>
+                                <td class="border px-4 py-2">178</td>
+                                <td class="border px-4 py-2">7</td>
+                                <td class="border px-4 py-2">1</td>
                             </tr>
                             <tr>
                                 <td class="border px-4 py-2">SEDANG</td>
-                                <td class="border px-4 py-2">20</td>
-                                <td class="border px-4 py-2">554</td>
+                                <td class="border px-4 py-2">7</td>
+                                <td class="border px-4 py-2">192</td>
                                 <td class="border px-4 py-2">1</td>
                             </tr>
                             <tr>
                                 <td class="border px-4 py-2">TIDAK SEHAT</td>
                                 <td class="border px-4 py-2">0</td>
-                                <td class="border px-4 py-2">1</td>
-                                <td class="border px-4 py-2">25</td>
+                                <td class="border px-4 py-2">2</td>
+                                <td class="border px-4 py-2">183</td>
                             </tr>
                         </tbody>
                     </table>
@@ -158,47 +162,47 @@
                         <tbody>
                             <tr>
                                 <td class="border px-4 py-2">BAIK</td>
-                                <td class="border px-4 py-2">0.90</td>
-                                <td class="border px-4 py-2">0.92</td>
-                                <td class="border px-4 py-2">0.91</td>
+                                <td class="border px-4 py-2">0.9622</td>
+                                <td class="border px-4 py-2">0.9570</td>
+                                <td class="border px-4 py-2">0.9596</td>
                                 <td class="border px-4 py-2">186</td>
                             </tr>
                             <tr>
                                 <td class="border px-4 py-2">SEDANG</td>
-                                <td class="border px-4 py-2">0.97</td>
-                                <td class="border px-4 py-2">0.96</td>
-                                <td class="border px-4 py-2">0.97</td>
-                                <td class="border px-4 py-2">575</td>
+                                <td class="border px-4 py-2">0.9552</td>
+                                <td class="border px-4 py-2">0.9600</td>
+                                <td class="border px-4 py-2">0.9576</td>
+                                <td class="border px-4 py-2">200</td>
                             </tr>
                             <tr>
                                 <td class="border px-4 py-2">TIDAK SEHAT</td>
-                                <td class="border px-4 py-2">0.96</td>
-                                <td class="border px-4 py-2">0.86</td>
-                                <td class="border px-4 py-2">0.91</td>
-                                <td class="border px-4 py-2">29</td>
+                                <td class="border px-4 py-2">0.9892</td>
+                                <td class="border px-4 py-2">0.9892</td>
+                                <td class="border px-4 py-2">0.9892</td>
+                                <td class="border px-4 py-2">185</td>
                             </tr>
                             <tr>
                                 <td class="border px-4 py-2 font-bold">Accuracy</td>
-                                <td class="border px-4 py-2 font-bold" colspan="4">0.95 (790 samples)</td>
+                                <td class="border px-4 py-2 font-bold" colspan="4">0.9685 (571 samples)</td>
                             </tr>
                             <tr>
                                 <td class="border px-4 py-2 font-bold">Macro Avg</td>
-                                <td class="border px-4 py-2">0.94</td>
-                                <td class="border px-4 py-2">0.92</td>
-                                <td class="border px-4 py-2">0.93</td>
-                                <td class="border px-4 py-2">790</td>
+                                <td class="border px-4 py-2">0.9689</td>
+                                <td class="border px-4 py-2">0.9687</td>
+                                <td class="border px-4 py-2">0.9688</td>
+                                <td class="border px-4 py-2">571</td>
                             </tr>
                             <tr>
                                 <td class="border px-4 py-2 font-bold">Weighted Avg</td>
-                                <td class="border px-4 py-2">0.95</td>
-                                <td class="border px-4 py-2">0.95</td>
-                                <td class="border px-4 py-2">0.95</td>
-                                <td class="border px-4 py-2">790</td>
+                                <td class="border px-4 py-2">0.9685</td>
+                                <td class="border px-4 py-2">0.9685</td>
+                                <td class="border px-4 py-2">0.96855</td>
+                                <td class="border px-4 py-2">571</td>
                             </tr>
                         </tbody>
                     </table>
                     <p>The confusion matrix and classification report show that the model achieves high precision,
-                        recall, and f1-score across all categories, with an overall accuracy of 95%. This indicates
+                        recall, and f1-score across all categories, with an overall accuracy of 96.85%. This indicates
                         that the model performs excellently in classifying air quality indices based on the ISPU
                         standards.</p>
                 </div>
