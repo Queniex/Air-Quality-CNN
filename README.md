@@ -32,4 +32,4 @@ Air pollution is one of the issues in society. Air pollution affects human healt
 
 
 pip install joblib==1.2.0
-pip install tensorflow==2.9.0
+pip install tflite-runtime
