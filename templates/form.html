@@ -7,42 +7,86 @@
             <h1 class="text-[43px] font-bold text-white text-center mb-5">CNN Classification Form</h1>
         </header>
 
-        <div class="flex justify-center">
+        <div id="modal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm">
+            <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+                <h2 class="text-2xl font-bold mb-4 text-black">Please be note!</h2>
+                <p class="mb-4 text-gray-800">You need to fulfill ISPU Parameter as:</p>
+                <table class="w-full text-left table-auto">
+                    <thead>
+                        <tr>
+                            <th class="text-black text-bold text-blackborder px-4 py-2">Parameter</th>
+                            <th class="text-black text-bold text-blackborder px-4 py-2">Range</th>
+                            <th class="text-black text-bold text-blackborder px-4 py-2">Unit</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-black">
+                        <tr>
+                            <td class="border px-4 py-2">PM10</td>
+                            <td class="border px-4 py-2">0-100</td>
+                            <td class="border px-4 py-2">mg/Nm³</td>
+                        </tr>
+                        <tr>
+                            <td class="border px-4 py-2">SO2</td>
+                            <td class="border px-4 py-2">0-100</td>
+                            <td class="border px-4 py-2">mg/Nm³</td>
+                        </tr>
+                        <tr>
+                            <td class="border px-4 py-2">CO</td>
+                            <td class="border px-4 py-2">0-100</td>
+                            <td class="border px-4 py-2">mg/Nm³</td>
+                        </tr>
+                        <tr>
+                            <td class="border px-4 py-2">O3</td>
+                            <td class="border px-4 py-2">0-200</td>
+                            <td class="border px-4 py-2">mg/Nm³</td>
+                        </tr>
+                        <tr>
+                            <td class="border px-4 py-2">NO2</td>
+                            <td class="border px-4 py-2">0-500</td>
+                            <td class="border px-4 py-2">mg/Nm³</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button id="close-modal" class="btn btn-primary w-full mt-4">Close</button>
+            </div>
+        </div>
+
+        <div class="flex justify-center mt-10">
             <form action="{{ url_for('predict') }}" method="POST"
                 class="bg-gray-700 p-6 rounded-lg shadow-lg w-full max-w-lg">
-                <div class="grid grid-cols-3 gap-3">
+                <div class="grid grid-cols-3 gap-2">
                     <div class="mb-4">
                         <label for="pm10" class="block text-white text-sm font-bold mb-2">PM10:</label>
                         <input required type="number" name="pm10" id="pm10"
-                            class="input input-bordered bg-white w-full text-black" placeholder="Enter value" min="0"
+                            class="input input-bordered bg-white w-full text-black" placeholder="0-100mg/Nm³" min="0"
                             max="100">
                     </div>
 
                     <div class="mb-4">
                         <label for="so2" class="block text-white text-sm font-bold mb-2">SO2:</label>
                         <input required type="number" name="so2" id="so2"
-                            class="input input-bordered bg-white w-full text-black" placeholder="Enter value" min="0"
+                            class="input input-bordered bg-white w-full text-black" placeholder="0-100mg/Nm³" min="0"
                             max="100">
                     </div>
 
                     <div class="mb-4">
                         <label for="co" class="block text-white text-sm font-bold mb-2">CO:</label>
                         <input required type="number" name="co" id="co"
-                            class="input input-bordered bg-white w-full text-black" placeholder="Enter value" min="0"
+                            class="input input-bordered bg-white w-full text-black" placeholder="0-100mg/Nm³" min="0"
                             max="100">
                     </div>
 
                     <div class="mb-4">
                         <label for="o3" class="block text-white text-sm font-bold mb-2">O3:</label>
                         <input required type="number" name="o3" id="o3"
-                            class="input input-bordered bg-white w-full text-black" placeholder="Enter value" min="0"
+                            class="input input-bordered bg-white w-full text-black" placeholder="0-200mg/Nm³" min="0"
                             max="200">
                     </div>
 
                     <div class="mb-4">
                         <label for="no2" class="block text-white text-sm font-bold mb-2">NO2:</label>
                         <input required type="number" name="no2" id="no2"
-                            class="input input-bordered bg-white w-full text-black" placeholder="Enter value" min="0"
+                            class="input input-bordered bg-white w-full text-black" placeholder="0-500mg/Nm³" min="0"
                             max="500">
                     </div>
                 </div>
@@ -57,6 +101,16 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
+        // Show modal on page load
+        const modal = document.getElementById('modal');
+        const closeModal = document.getElementById('close-modal');
+
+        modal.style.display = 'flex';
+
+        closeModal.addEventListener('click', function () {
+            modal.style.display = 'none';
+        });
+
         const inputs = document.querySelectorAll('input[type="number"]');
 
         inputs.forEach(input => {
@@ -70,7 +124,7 @@
                         this.value = 100;
                     } else if (this.id === 'so2' && this.value > 100) {
                         alert("Value cannot be more than 100");
-                        this.value = 1000;
+                        this.value = 100;
                     } else if (this.id === 'co' && this.value > 100) {
                         alert("Value cannot be more than 100");
                         this.value = 100;
